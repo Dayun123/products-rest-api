@@ -20,14 +20,8 @@ I'm working through the following concepts:
 As I'm trying to understand the Express framework, I will *NOT* be using:
 
 - Any client-side technology
-
-  No rendered webpages essentially
 - A database 
-
-  Data is stored in an array of objects
 - User accounts 
-
-  Just have a hard-coded list of acceptable api keys for practice
 - Testing
 - Sessions or cookies
 
