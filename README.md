@@ -15,7 +15,7 @@ I'm working through the following concepts:
 - Most CRUD operations (Create, Read, Delete)
 
 ---
-#### Caveats
+### Caveats
 
 As I'm trying to understand the Express framework, I will *NOT* be using:
 
@@ -49,7 +49,7 @@ http://localhost:3000
 ``` 
 
 ---
-#### Routes
+### Routes
 
 Accepts requests at the following routes
 
@@ -61,7 +61,7 @@ Accepts requests at the following routes
 | DELETE  | /products/:id | Delete a product      |
 
 ---
-#### API Key
+### API Key
 
 Access to all routes requires an `apiKey` query string parameter, which is setup as `abc123` in the default app. 
 
@@ -70,7 +70,7 @@ So, to get a listing of all products, the following request would be neccessary:
 `GET http://localhost:3000/products?apiKey=abc123`
 
 ---
-#### Search
+### Search
 
 To search for a product, append the `keyword` query string to the `GET /products` route, like so
 
@@ -81,7 +81,7 @@ The number of results can be filtered with the `numResults` query string paramet
 `GET http://localhost:3000/products?apiKey=abc123&keyword=dell&numResults=3`
 
 ---
-#### Response Format
+### Response Format
 
 All successful responses will be a JSON object with either an array of products or a single product. If there are no products for a given query, an empty JSON object is returned in the response.
 
@@ -95,7 +95,7 @@ Error responses will consist of a JSON object with `statusCode` and `statusMessa
 ```
 
 ---
-#### Creating A Product
+### Creating A Product
 
 To create a product, send a JSON object in the request body with the format:
 
