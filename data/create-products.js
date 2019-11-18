@@ -1,4 +1,5 @@
 const faker = require('faker');
+const fs = require('fs');
 
 const products = [];
 const numProducts = 1000;
@@ -14,4 +15,10 @@ for (let i = 1; i <= numProducts; i++) {
   });
 }
 
-console.log(products);
+let productsFileContents = 'module.exports = ' + JSON.stringify(products);
+const productsPath = `${__dirname}/products.js`;
+
+fs.writeFile(productsPath, productsFileContents, (err) => {
+  if (err) throw err;
+  console.log(`Created 1000 products at ${productsPath}`);
+});
