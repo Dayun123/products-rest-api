@@ -28,7 +28,6 @@ http://localhost:3000
 ---
 #### Routes
 
-
 Accepts requests at the following routes
 
 |  Method | Path          | Description           |
@@ -63,7 +62,6 @@ The number of results can be filtered with the `numResults` query string paramet
 
 All successful responses will be a JSON object with either an array of products or a single product. If there are no products for a given query, an empty JSON object is returned in the response.
 
-
 Error responses will consist of a JSON object with `statusCode` and `statusMessage` properties, like so:
 
 ```
@@ -87,6 +85,7 @@ To create a product, send a JSON object in the request body with the format:
 ```
 
 Make sure the request has the following header:
+
 ```
 Content-Type: 'application/json'
 ```
