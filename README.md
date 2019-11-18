@@ -2,6 +2,32 @@
 
 A simple REST API for querying and performing CRUD operations on a collection of products.
 
+## Project Goals
+
+This project is meant to showcase a very simple REST API implementation, using knowledge I picked up from Robert Bunch's [Just Express](https://www.udemy.com/course/just-express-with-a-bunch-of-node-and-http-in-detail) Udemy tutorial series, as well as some stuff I've learned checking out the Express docs. 
+
+I'm working through the following concepts:
+
+- App vs. router middleware
+- Express error-handling middleware
+- HTTP status codes and well-formed error messages
+- Basic search functionality
+- Most CRUD operations (Create, Read, Delete)
+
+---
+#### Caveats
+
+As I'm trying to understand the Express framework, I will *NOT* be using:
+
+- Any client-side technology
+  No rendered webpages essentially
+- A database 
+  Data is stored in an array of objects
+- User accounts 
+  Just have a hard-coded list of acceptable api keys for practice
+- Testing
+- Sessions or cookies
+
 ## Installation
 
 Clone the repo and run `npm install`
