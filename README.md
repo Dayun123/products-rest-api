@@ -101,9 +101,10 @@ To create a product, send a JSON object in the request body with the format:
 
 ```
 {
+  "id": 1,
   "name": "Pencil Sharpener",
   "price": 12.99,
-  "brand": "X-Acto"
+  "category": "X-Acto"
 }
 ```
 
