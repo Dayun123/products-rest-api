@@ -42,11 +42,7 @@ Start the server
 $ DEBUG=products-api:* npm start
 ```
 
-All requests can then be made to the base url 
-
-```bash
-http://localhost:3000
-``` 
+All requests can then be made to the base url: `http://localhost:3000`
 
 ---
 ### Routes
