@@ -6,7 +6,7 @@ const numProducts = 1000;
 
 for (let i = 1; i <= numProducts; i++) {
   let hackerNoun = faker.hacker.noun();
-  hackerNoun = hackerNoun[0].toUpperCase() + hackerNoun.slice(1, hackerNoun.length - 1);
+  hackerNoun = hackerNoun[0].toUpperCase() + hackerNoun.slice(1, hackerNoun.length);
   products.push({
     id: i,
     name: `${hackerNoun} ${faker.commerce.product()}`,
