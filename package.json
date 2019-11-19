@@ -8,7 +8,6 @@
     "create-products": "node ./data/create-products.js"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "faker": "^4.1.0",
