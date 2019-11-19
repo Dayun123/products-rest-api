@@ -15,7 +15,7 @@ for (let i = 1; i <= numProducts; i++) {
   });
 }
 
-let productsFileContents = 'module.exports = ' + JSON.stringify(products);
+const productsFileContents = 'module.exports = ' + JSON.stringify(products);
 const productsPath = `${__dirname}/products.js`;
 
 fs.writeFile(productsPath, productsFileContents, (err) => {
