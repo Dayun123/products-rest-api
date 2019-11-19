@@ -27,7 +27,7 @@ As I'm trying to understand the Express framework at a very basic level, I will 
 
 ## Installation
 
-Clone the repo and run `npm install`
+Clone the repo and run `npm install`:
 
 ```bash
 $ git clone git@github.com:Dayun123/products-rest-api.git
@@ -36,10 +36,10 @@ $ npm install
 
 ## Usage
 
-Start the server
+Start the server:
 
 ```bash
-$ DEBUG=products-api:* npm start
+$ DEBUG=products-rest-api:* npm run dev
 ```
 
 All requests can then be made to the base url: `http://localhost:3000`
@@ -47,7 +47,7 @@ All requests can then be made to the base url: `http://localhost:3000`
 ---
 ### Routes
 
-Accepts requests at the following routes
+Accepts requests at the following routes:
 
 |  Method | Path          | Description           |
 | --------| ------------- | ----------------------|
@@ -68,7 +68,7 @@ So, to get a listing of all products, the following request would be neccessary:
 ---
 ### Search
 
-To search for a product, append the `keyword` query string to the `GET /products` route, like so
+To search for a product, append the `keyword` query string to the `GET /products` route, like so:
 
 `GET http://localhost:3000/products?apiKey=abc123&keyword=dell`
 
@@ -83,7 +83,7 @@ All successful responses will be a JSON object with either an array of products 
 
 Error responses will consist of a JSON object with `statusCode` and `statusMessage` properties, like so:
 
-```
+```json
 {
   "statusCode": 401,
   "statusMessage": "Must provide a valid API Key"
@@ -95,7 +95,7 @@ Error responses will consist of a JSON object with `statusCode` and `statusMessa
 
 To create a product, send a JSON object in the request body with the format:
 
-```
+```json
 {
   "id": 1,
   "name": "Pencil Sharpener",
