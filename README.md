@@ -29,17 +29,17 @@ As I'm trying to understand the Express framework at a very basic level, I will 
 
 Clone the repo and run `npm install`
 
-```
-git clone git@github.com:Dayun123/products-rest-api.git
-npm install
+```bash
+$ git clone git@github.com:Dayun123/products-rest-api.git
+$ npm install
 ```
 
 ## Usage
 
 Start the server
 
-```
-DEBUG=products-api:* npm start
+```bash
+$ DEBUG=products-api:* npm start
 ```
 
 All requests can then be made to the base url 
