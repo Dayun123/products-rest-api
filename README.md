@@ -25,6 +25,8 @@ As I'm trying to understand the Express framework at a very basic level, I will 
 - Testing
 - Sessions or cookies
 
+To keep things simple, I'm also not creating or deleting products from the file system when then user hits those routes, but rather just performing these operations on the array of products loaded into memory for the life of the server. So, if the server gets restarted, any create or delete operations will be undone.
+
 ## Installation
 
 Clone the repo and run `npm install`:
