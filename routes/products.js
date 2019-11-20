@@ -16,6 +16,13 @@ router.param('id', (req, res, next) => {
   }
   
   res.locals.product = products.find((product) => product.id === res.locals.id);
+
+  if (!res.locals.product) {
+    next({
+      statusCode: 404,
+      statusMessage: 'No product found with that id'
+    });
+  }
   
   next();
 });
@@ -36,15 +43,7 @@ router.post('/', validate.validateContentType, validate.validateProductKeys, (re
 });
 
 router.get('/:id', (req, res, next) => {
-  
-  if (!res.locals.product) {
-    next({
-      statusCode: 404,
-      statusMessage: 'No product found with that id'
-    });
-  } else {
-    res.json(res.locals.product);
-  }
+  res.json(res.locals.product);
 });
 
 router.use((err, req, res, next) => {
