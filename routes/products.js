@@ -1,5 +1,6 @@
 const express = require('express');
 const products = require('../data/products');
+const validate = require('../utils/validate');
 
 const router = express.Router();
 
@@ -19,7 +20,7 @@ router.get('/', (req, res, next) => {
   res.json(products);
 });
 
-router.post('/', validateContentType, validateProductKeys, (req, res, next) => {
+router.post('/', validate.validateContentType, validate.validateProductKeys, (req, res, next) => {
 
   products.push(req.body);
 
