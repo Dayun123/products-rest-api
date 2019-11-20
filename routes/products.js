@@ -5,13 +5,18 @@ const validate = require('../utils/validate');
 const router = express.Router();
 
 router.param('id', (req, res, next) => {
+
   res.locals.id = +req.params.id;
+  
   if (!validate.validateId(res.locals.id)) {
     next({
       statusCode: 422,
       statusMessage: ':id parameter must be a number and must be greater than 0',
     });
   }
+  
+  res.locals.product = products.find((product) => product.id === res.locals.id);
+  
   next();
 });
 
@@ -31,14 +36,14 @@ router.post('/', validate.validateContentType, validate.validateProductKeys, (re
 });
 
 router.get('/:id', (req, res, next) => {
-  const product = products.find((product) => product.id === res.locals.id);
-  if (!product) {
+  
+  if (!res.locals.product) {
     next({
       statusCode: 404,
       statusMessage: 'No product found with that id'
     });
   } else {
-    res.json(product);
+    res.json(res.locals.product);
   }
 });
 
