@@ -19,6 +19,10 @@ router.get('/', (req, res, next) => {
   res.json(products);
 });
 
+router.post('/', (req, res, next) => {
+  res.json({msg: 'success'});
+});
+
 router.get('/:id', (req, res, next) => {
   const product = products.find((product) => product.id === res.locals.id);
   if (!product) {
