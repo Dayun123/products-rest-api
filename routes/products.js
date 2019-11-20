@@ -1,11 +1,10 @@
 const express = require('express');
+const products = require('../data/products');
+
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  res.json({
-    statusCode: 200,
-    statusMessage: 'Get All Products',
-  });
+  res.json(products);
 });
 
 module.exports = router;
