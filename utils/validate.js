@@ -12,7 +12,7 @@ exports.validateProductKeys = (req, res, next) => {
   if (!requiredProductKeys.every(key => requestProductKeys.includes(key))) {
     next({
       statusCode: 422,
-      statusMessage: 'To create a product the keys id, name, price, and category are required',
+      statusMessage: 'To create a product the id, name, price, and category keys are required',
     });
   }
 
