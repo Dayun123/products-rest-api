@@ -20,6 +20,15 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+
+  const requiredProductKeys = [
+    'id',
+    'name',
+    'price',
+    'category',
+  ];
+
+  const requestProductKeys = Object.keys(req.body);
   
   if (req.get('Content-Type') !== 'application/json') {
     next({
@@ -27,7 +36,7 @@ router.post('/', (req, res, next) => {
       statusMessage: 'Content-Type must be application/json',
     });
   }
-  
+
   res.status(201).json({
     statusCode: 201,
     statusMessage: 'Product created',
