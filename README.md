@@ -112,4 +112,4 @@ Make sure the request has the following header:
 Content-Type: 'application/json'
 ```
 
-You can add any fields you like, those are the ones that come 'stock' with the app and are required in order to create a new product.
+You can add any fields you like, those are the ones that come 'stock' with the app and are required in order to create a new product. Any create or delete operations are only persisted for the life of the server (see the 'Caveats' section for an explanation).
