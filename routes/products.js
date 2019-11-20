@@ -8,9 +8,8 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  res.json({
-    id: req.params.id
-  });
+  const product = products.find((product) => product.id === +req.params.id);
+  res.json(product);
 });
 
 module.exports = router;
