@@ -33,12 +33,18 @@ router.get('/', (req, res, next) => {
 
 router.post('/', validate.validateContentType, validate.validateProductKeys, (req, res, next) => {
 
-  products.push(req.body);
-
-  res.status(201).json({
-    statusCode: 201,
-    statusMessage: 'Product created',
-  });  
+  if (products.find(product => product.id === req.body.id)) {
+    next({
+      statusCode: 422,
+      statusMessage: 'Cannot create product, id is already in use',
+    });
+  } else {
+    products.push(req.body);
+    res.status(201).json({
+      statusCode: 201,
+      statusMessage: 'Product created',
+    });  
+  }
 
 });
 
