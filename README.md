@@ -81,7 +81,40 @@ The number of results can be filtered with the `numResults` query string paramet
 ---
 ### Response Format
 
-Successful responses to GET routes that should return a product or products will consist of a JSON object with either an array of products or a single product. All other responses will consist of a JSON object with `statusCode` and `statusMessage` properties indicating the success or failure of the request.
+#### Success
+
+Successful responses return a single product, an array of products, or a JSON object with `statusCode` and `statusMessage` properties:
+
+|  Method | Path          | Return Value                                |
+| --------| ------------- | --------------------------------------------|
+| GET     | /products     | Array of products                           | 
+| GET     | /products/:id | Single product                              |
+| POST    | /products     | JSON with `statusCode` and `statusMessage`  |
+| DELETE  | /products/:id | JSON with `statusCode` and `statusMessage`  |
+
+A query to `GET /products/1` would return:
+
+```json
+{
+  "id": 1,
+  "name": "Pencil Sharpener",
+  "price": 12.99,
+  "category": "Office Supplies"
+}
+```
+
+While a successful query to `POST /products` would return:
+
+```json
+{
+  "statusCode": 201,
+  "statusMessage": "Product created"
+}
+```
+
+#### Failure
+
+Unsuccessful responses return a JSON object with `statusCode` and `statusMessage` properties detailing what went wrong.
 
 Here is an example response for an authentication error:
 
@@ -92,12 +125,12 @@ Here is an example response for an authentication error:
 }
 ```
 
-And here is an example response for the successful creation of a product:
+And here is an example response for a request that doesn't have the correct keys for creating a new product:
 
 ```json
 {
-  "statusCode": 201,
-  "statusMessage": "Product created"
+  "statusCode": 422,
+  "statusMessage": "To create a product the keys id, name, price, and category are required"
 }
 ```
 
