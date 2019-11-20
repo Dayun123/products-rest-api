@@ -20,10 +20,19 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  res.status(201).json({
-    statusCode: 201,
-    statusMessage: 'Product created',
-  });
+  
+  if (req.get('Content-Type') !== 'application/json') {
+    next({
+      statusCode: 400,
+      statusMessage: 'Content-Type must be application/json',
+    });
+  } else {
+    res.status(201).json({
+      statusCode: 201,
+      statusMessage: 'Product created',
+    });  
+  }
+  
 });
 
 router.get('/:id', (req, res, next) => {
