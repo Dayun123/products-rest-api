@@ -81,14 +81,23 @@ The number of results can be filtered with the `numResults` query string paramet
 ---
 ### Response Format
 
-All successful responses will be a JSON object with either an array of products or a single product. If there are no products for a given query, an empty JSON object is returned in the response.
+Successful responses to GET routes that should return a product or products will consist of a JSON object with either an array of products or a single product. All other responses will consist of a JSON object with `statusCode` and `statusMessage` properties indicating the success or failure of the request.
 
-Error responses will consist of a JSON object with `statusCode` and `statusMessage` properties, like so:
+Here is an example response for an authentication error:
 
 ```json
 {
   "statusCode": 401,
   "statusMessage": "Must provide a valid API Key"
+}
+```
+
+And here is an example response for the successful creation of a product:
+
+```json
+{
+  "statusCode": 201,
+  "statusMessage": "Product created"
 }
 ```
 
