@@ -26,12 +26,14 @@ router.post('/', (req, res, next) => {
       statusCode: 400,
       statusMessage: 'Content-Type must be application/json',
     });
-  } else {
-    res.status(201).json({
-      statusCode: 201,
-      statusMessage: 'Product created',
-    });  
   }
+  
+  res.status(201).json({
+    statusCode: 201,
+    statusMessage: 'Product created',
+  });  
+
+  
   
 });
 
