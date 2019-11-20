@@ -14,8 +14,7 @@ I'm working through the following concepts:
 - Basic search functionality
 - Most CRUD operations (Create, Read, Delete)
 
----
-### Caveats
+## Caveats
 
 As I'm trying to understand the Express framework at a very basic level, I will *NOT* be using:
 
@@ -46,8 +45,7 @@ $ DEBUG=products-rest-api:* npm run dev
 
 All requests can then be made to the base url: `http://localhost:3000`
 
----
-### Routes
+## Routes
 
 Accepts requests at the following routes:
 
@@ -58,8 +56,7 @@ Accepts requests at the following routes:
 | POST    | /products     | Create a product      |
 | DELETE  | /products/:id | Delete a product      |
 
----
-### API Key
+## API Key
 
 Access to all routes requires an `apiKey` query string parameter, which is setup as `abc123` in the default app. 
 
@@ -67,8 +64,7 @@ So, to get a listing of all products, the following request would be neccessary:
 
 `GET http://localhost:3000/products?apiKey=abc123`
 
----
-### Search
+## Search
 
 To search for a product, append the `keyword` query string to the `GET /products` route, like so:
 
@@ -78,10 +74,9 @@ The number of results can be filtered with the `numResults` query string paramet
 
 `GET http://localhost:3000/products?apiKey=abc123&keyword=dell&numResults=3`
 
----
-### Response Format
+## Response Format
 
-#### Success
+### Success
 
 Successful responses return a single product, an array of products, or a JSON object with `statusCode` and `statusMessage` properties:
 
@@ -112,7 +107,7 @@ While a successful query to `POST /products` would return:
 }
 ```
 
-#### Failure
+### Failure
 
 Unsuccessful responses return a JSON object with `statusCode` and `statusMessage` properties detailing what went wrong.
 
@@ -134,8 +129,7 @@ And here is an example response for a request that doesn't have the correct keys
 }
 ```
 
----
-### Creating A Product
+## Creating A Product
 
 To create a product, send a JSON object in the request body with the format:
 
