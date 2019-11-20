@@ -55,6 +55,8 @@ router.get('/', (req, res, next) => {
 
 router.post('/', validateContentType, validateProductKeys, (req, res, next) => {
 
+  products.push(req.body);
+
   res.status(201).json({
     statusCode: 201,
     statusMessage: 'Product created',
