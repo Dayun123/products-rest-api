@@ -21,7 +21,14 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   const product = products.find((product) => product.id === res.locals.id);
-  res.json(product);
+  if (!product) {
+    next({
+      statusCode: 404,
+      statusMessage: 'No product found with that id'
+    });
+  } else {
+    res.json(product);
+  }
 });
 
 router.use((err, req, res, next) => {
