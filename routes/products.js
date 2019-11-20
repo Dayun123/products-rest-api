@@ -20,7 +20,10 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  res.json({msg: 'success'});
+  res.status(201).json({
+    statusCode: 201,
+    statusMessage: 'Product created',
+  });
 });
 
 router.get('/:id', (req, res, next) => {
