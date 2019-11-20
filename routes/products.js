@@ -3,40 +3,6 @@ const products = require('../data/products');
 
 const router = express.Router();
 
-const validateProductKeys = (req, res, next) => {
-  
-  const requiredProductKeys = [
-    'id',
-    'name',
-    'price',
-    'category',
-  ];
-
-  const requestProductKeys = Object.keys(req.body);
-
-  if (!requiredProductKeys.every(key => requestProductKeys.includes(key))) {
-    next({
-      statusCode: 422,
-      statusMessage: 'To create a product the keys id, name, price, and category are required',
-    });
-  }
-
-  next();
-
-};
-
-const validateContentType = (req, res, next) => {
-  
-  if (req.get('Content-Type') !== 'application/json') {
-    next({
-      statusCode: 400,
-      statusMessage: 'Content-Type must be application/json',
-    });
-  }
-
-  next();
-};
-
 router.param('id', (req, res, next) => {
   res.locals.id = +req.params.id;
   if ( isNaN(res.locals.id) || (res.locals.id < 1) ) {
