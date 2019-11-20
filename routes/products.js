@@ -21,6 +21,13 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 
+  if (req.get('Content-Type') !== 'application/json') {
+    next({
+      statusCode: 400,
+      statusMessage: 'Content-Type must be application/json',
+    });
+  }
+  
   const requiredProductKeys = [
     'id',
     'name',
@@ -29,13 +36,14 @@ router.post('/', (req, res, next) => {
   ];
 
   const requestProductKeys = Object.keys(req.body);
-  
-  if (req.get('Content-Type') !== 'application/json') {
+
+  if (!requiredProductKeys.every(key => requestProductKeys.includes(key))) {
     next({
-      statusCode: 400,
-      statusMessage: 'Content-Type must be application/json',
+      statusCode: 422,
+      statusMessage: 'To create a product the keys id, name, price, and category are required',
     });
   }
+
 
   res.status(201).json({
     statusCode: 201,
