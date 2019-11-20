@@ -115,8 +115,8 @@ To create a product, send a JSON object in the request body with the format:
 }
 ```
 
-A request to create a product should have the header `Content-Type: application/json` or it will be rejected.
-
 You can add any fields you like, those are the ones that come 'stock' with the app and are required in order to create a new product.
+
+A request to create a product should have the header `Content-Type: application/json` or it will be rejected.
 
 **Any create or delete operations are only persisted for the life of the server (see the ['Caveats'](#caveats) section for an explanation).*
