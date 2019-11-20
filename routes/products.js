@@ -4,7 +4,8 @@ const products = require('../data/products');
 const router = express.Router();
 
 router.param('id', (req, res, next) => {
-  if ( isNaN(+req.params.id) || (+req.params.id < 1) ) {
+  res.locals.id = +req.params.id;
+  if ( isNaN(res.locals.id) || (res.locals.id < 1) ) {
     next({
       statusCode: 422,
       statusMessage: ':id parameter must be a number and must be greater than 0',
@@ -19,7 +20,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  const product = products.find((product) => product.id === +req.params.id);
+  const product = products.find((product) => product.id === res.locals.id);
   res.json(product);
 });
 
