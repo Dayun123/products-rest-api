@@ -31,3 +31,5 @@ exports.validateContentType = (req, res, next) => {
 
   next();
 };
+
+exports.validateId = id => !isNaN(id) && id > 1;

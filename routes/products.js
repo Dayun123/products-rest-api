@@ -6,14 +6,13 @@ const router = express.Router();
 
 router.param('id', (req, res, next) => {
   res.locals.id = +req.params.id;
-  if ( isNaN(res.locals.id) || (res.locals.id < 1) ) {
+  if (!validate.validateId(res.locals.id)) {
     next({
       statusCode: 422,
       statusMessage: ':id parameter must be a number and must be greater than 0',
     });
-  } else {
-    next();
   }
+  next();
 });
 
 router.get('/', (req, res, next) => {
