@@ -1,3 +1,5 @@
+const products = require('../data/products');
+
 exports.validateProductKeys = (req, res, next) => {
   
   const requiredProductKeys = [
@@ -33,3 +35,14 @@ exports.validateContentType = (req, res, next) => {
 };
 
 exports.validateId = id => !isNaN(id) && id > 1;
+
+exports.validateUniqueId = (req, res, next) => {
+  if (products.find(product => product.id === req.body.id)) {
+    next({
+      statusCode: 422,
+      statusMessage: 'Cannot create product, id is already in use',
+    });
+  } else {
+    next();
+  }
+};
