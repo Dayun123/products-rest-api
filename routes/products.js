@@ -11,7 +11,7 @@ router.param('id', (req, res, next) => {
   if (!validate.validateId(res.locals.id)) {
     next({
       statusCode: 422,
-      statusMessage: ':id parameter must be a number and must be greater than 0',
+      statusMessage: ':id parameter must be a number greater than 0',
     });
   }
   
