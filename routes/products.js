@@ -3,30 +3,7 @@ const products = require('../data/products');
 
 const router = express.Router();
 
-router.param('id', (req, res, next) => {
-  res.locals.id = +req.params.id;
-  if ( isNaN(res.locals.id) || (res.locals.id < 1) ) {
-    next({
-      statusCode: 422,
-      statusMessage: ':id parameter must be a number and must be greater than 0',
-    });
-  } else {
-    next();
-  }
-});
-
-router.get('/', (req, res, next) => {
-  res.json(products);
-});
-
-router.post('/', (req, res, next) => {
-
-  if (req.get('Content-Type') !== 'application/json') {
-    next({
-      statusCode: 400,
-      statusMessage: 'Content-Type must be application/json',
-    });
-  }
+const validateProductKeys = (req, res, next) => {
   
   const requiredProductKeys = [
     'id',
@@ -44,14 +21,45 @@ router.post('/', (req, res, next) => {
     });
   }
 
+  next();
+
+};
+
+const validateContentType = (req, res, next) => {
+  
+  if (req.get('Content-Type') !== 'application/json') {
+    next({
+      statusCode: 400,
+      statusMessage: 'Content-Type must be application/json',
+    });
+  }
+
+  next();
+};
+
+router.param('id', (req, res, next) => {
+  res.locals.id = +req.params.id;
+  if ( isNaN(res.locals.id) || (res.locals.id < 1) ) {
+    next({
+      statusCode: 422,
+      statusMessage: ':id parameter must be a number and must be greater than 0',
+    });
+  } else {
+    next();
+  }
+});
+
+router.get('/', (req, res, next) => {
+  res.json(products);
+});
+
+router.post('/', validateContentType, validateProductKeys, (req, res, next) => {
 
   res.status(201).json({
     statusCode: 201,
     statusMessage: 'Product created',
   });  
 
-  
-  
 });
 
 router.get('/:id', (req, res, next) => {
