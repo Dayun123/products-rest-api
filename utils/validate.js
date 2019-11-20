@@ -34,7 +34,7 @@ exports.validateContentType = (req, res, next) => {
   next();
 };
 
-exports.validateId = id => !isNaN(id) && id > 1;
+exports.validateId = id => !isNaN(id) && id > 0;
 
 exports.validateUniqueId = (req, res, next) => {
   if (products.find(product => product.id === req.body.id)) {
