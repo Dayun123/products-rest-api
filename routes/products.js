@@ -13,6 +13,7 @@ router.param('id', (req, res, next) => {
       statusCode: 422,
       statusMessage: ':id parameter must be a number greater than 0',
     });
+    return;
   }
   
   res.locals.product = products.find((product) => product.id === res.locals.id);
@@ -22,6 +23,7 @@ router.param('id', (req, res, next) => {
       statusCode: 404,
       statusMessage: 'No product found with that id'
     });
+    return;
   }
   
   next();

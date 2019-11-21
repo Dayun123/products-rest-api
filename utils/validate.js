@@ -46,3 +46,14 @@ exports.validateUniqueId = (req, res, next) => {
     next();
   }
 };
+
+exports.validateApiKey = (req, res, next) => {
+  if (req.query.apiKey !== 'abc123') {
+    next({
+      "statusCode": 401,
+      "statusMessage": "Must provide a valid API Key"
+    });
+  } else {
+    next();
+  }
+}

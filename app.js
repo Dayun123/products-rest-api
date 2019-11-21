@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const validate = require('./utils/validate');
 
 const productsRouter = require('./routes/products');
 
@@ -9,16 +10,7 @@ const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 
-app.use((req, res, next) => {
-  if (req.query.apiKey !== 'abc123') {
-    next({
-      "statusCode": 401,
-      "statusMessage": "Must provide a valid API Key"
-    });
-  } else {
-    next();
-  }
-});
+app.use(validate.validateApiKey);
 
 app.use('/products', productsRouter);
 
