@@ -16,22 +16,20 @@ exports.validateProductKeys = (req, res, next) => {
       statusCode: 422,
       statusMessage: 'To create a product the id, name, price, and category keys are required',
     });
+  } else {
+    next();
   }
-
-  next();
-
 };
 
 exports.validateContentType = (req, res, next) => {
-  
   if (req.get('Content-Type') !== 'application/json') {
     next({
       statusCode: 400,
       statusMessage: 'Content-Type must be application/json',
     });
+  } else {
+    next();
   }
-
-  next();
 };
 
 exports.validateId = id => !isNaN(id) && id > 0;

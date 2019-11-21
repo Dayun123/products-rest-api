@@ -48,6 +48,4 @@ router.get('/:id', (req, res, next) => {
   res.json(res.locals.product);
 });
 
-
-
 module.exports = router;
