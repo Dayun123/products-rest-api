@@ -46,8 +46,6 @@ router.get('/:id', (req, res, next) => {
   res.json(res.locals.product);
 });
 
-router.use((err, req, res, next) => {
-  res.status(err.statusCode).json(err);
-});
+
 
 module.exports = router;
