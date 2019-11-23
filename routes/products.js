@@ -48,4 +48,11 @@ router.get('/:id', (req, res, next) => {
   res.json(res.locals.product);
 });
 
+router.delete('/:id', (req, res, next) => {
+  res.json({
+    statusCode: 200,
+    statusMessage: 'Product deleted',
+  });
+});
+
 module.exports = router;
