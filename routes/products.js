@@ -49,9 +49,12 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
+  const deleteProductIndex = products.findIndex((product) => product.id === res.locals.product.id);
+  const [ deletedProduct ] = products.splice(deleteProductIndex, 1);
   res.json({
     statusCode: 200,
     statusMessage: 'Product deleted',
+    product: deletedProduct,
   });
 });
 
