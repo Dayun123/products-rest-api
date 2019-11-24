@@ -40,6 +40,7 @@ router.post('/', validate.validateContentType, validate.validateProductKeys, val
   res.status(201).json({
     statusCode: 201,
     statusMessage: 'Product created',
+    product: req.body,
   });  
 
 });
