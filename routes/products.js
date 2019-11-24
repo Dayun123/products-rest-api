@@ -30,7 +30,22 @@ router.param('id', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  res.json(products);
+  if (req.query.keyword) {
+    const keyword = req.query.keyword.toLowerCase();
+    const matchedProducts = products.filter((product) => {
+      const lowercaseValues = Object.values(product).map((value) => {
+        if (typeof value === 'string') {
+          return value.toLowerCase();
+        } else {
+          return value;
+        }
+      });
+      return lowercaseValues.join(' ').includes(keyword);
+    });
+    res.json(matchedProducts);
+  } else {
+    res.json(products);
+  }
 });
 
 router.post('/', validate.validateContentType, validate.validateProductKeys, validate.validateUniqueId, (req, res, next) => {
