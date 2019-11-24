@@ -78,16 +78,16 @@ The number of results can be filtered with the `numResults` query string paramet
 
 ### Success
 
-Successful responses return a single product, an array of products, or a JSON object with `statusCode` and `statusMessage` properties:
+Successful responses return a single product, an array of products, or a JSON object with `statusCode`, `statusMessage`, and `product` properties:
 
 |  Method | Path          | Return Value                                |
 | --------| ------------- | --------------------------------------------|
 | GET     | /products     | Array of products                           | 
 | GET     | /products/:id | Single product                              |
-| POST    | /products     | JSON with `statusCode` and `statusMessage`  |
-| DELETE  | /products/:id | JSON with `statusCode` and `statusMessage`  |
+| POST    | /products     | JSON with `statusCode`, `statusMessage`, and `product` properties  |
+| DELETE  | /products/:id | JSON with `statusCode`, `statusMessage`, and `product` properties  |
 
-A query to `GET /products/1` would return:
+A request to `GET /products/1` would return:
 
 ```json
 {
@@ -98,12 +98,18 @@ A query to `GET /products/1` would return:
 }
 ```
 
-While a successful query to `POST /products` would return:
+While a successful request to `POST /products` would return:
 
 ```json
 {
   "statusCode": 201,
-  "statusMessage": "Product created"
+  "statusMessage": "Product created",
+  "product": {
+    "id": 1,
+    "name": "Pencil Sharpener",
+    "price": 12.99,
+    "category": "Office Supplies"
+  }
 }
 ```
 
