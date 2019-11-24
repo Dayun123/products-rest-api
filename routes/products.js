@@ -30,7 +30,9 @@ router.param('id', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
+  
   res.locals.products = products;
+  
   if (req.query.keyword) {
     const keyword = req.query.keyword.toLowerCase();
     res.locals.products = res.locals.products.filter((product) => {
@@ -43,7 +45,12 @@ router.get('/', (req, res, next) => {
       });
       return lowercaseValues.join(' ').includes(keyword);
     });
-  } 
+  }
+
+  if (!isNaN(req.query.num_results)) {
+    res.locals.products = res.locals.products.slice(0, +req.query.num_results);
+  }
+
   res.json(res.locals.products);
 });
 
