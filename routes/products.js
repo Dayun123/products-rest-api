@@ -47,10 +47,17 @@ router.get('/', (req, res, next) => {
     });
   }
 
-  if (!isNaN(req.query.num_results)) {
-    res.locals.products = res.locals.products.slice(0, +req.query.num_results);
+  if (req.query.num_results) {
+    if (!isNaN(req.query.num_results) && +req.query.num_results >= 0) {
+      res.locals.products = res.locals.products.slice(0, +req.query.num_results);
+    } else {
+      return next({
+        statusCode: 422,
+        statusMessage: 'num_results must be a number greater than -1',
+      });
+    }
   }
-
+  
   res.json(res.locals.products);
 });
 
